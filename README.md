@@ -34,14 +34,14 @@ Results:
 Apple Encoder and Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes444HQ 
 --- | --- | --- | --- |--- |--- |---
-Discreet Values | 876 | 283 | 290 | 286 | 289 | 3500 
+Discreet Luminance Values | 876 | 2335 | 3503 | 3503 | 3500 | 3500 
 
 
 16bit :
 Apple Encoder and Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes444HQ 
 --- | --- | --- | --- |--- |--- |---
-Discreet Values | 876 | 283 | 290 | 286 | 289 | 3500 
+Discreet Luminance Values | 876 | 283 | 290 | 286 | 289 | 3500 
 
 
 
