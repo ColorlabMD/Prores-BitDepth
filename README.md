@@ -30,12 +30,14 @@ Same as 16bit but with 4096 frames represented bit shifted 4bits
 
 
 Results:
-12 Bit
+12 Bit :
 Apple Encoder and Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes444HQ 
 --- | --- | --- | --- |--- |--- |---
 Discreet Values | 876 | 283 | 290 | 286 | 289 | 3500 
-16bit
+
+
+16bit :
 Apple Encoder and Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes444HQ 
 --- | --- | --- | --- |--- |--- |---
