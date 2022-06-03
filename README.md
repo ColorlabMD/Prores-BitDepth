@@ -18,23 +18,26 @@ Testing procedure:
 Platform M1 Apple MacOS 12.2.1 Objective c and C++ Using AVFoundation.
 
 16bit:
-Generate 65536 RGBA64 in memory with filled color componenet pixel values of 0-65535 and alpha 65535 where supported.
-Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files.
-Read back created ProRes movie and compare pixel values and compare uniquwe pixel values.
+A. Generate 65536 RGBA64 in memory with filled color componenet pixel values of 0-65535 and alpha 65535 where supported.
+B. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files.
+1. Read back created ProRes movie and count unique luminace values in decoded frames.
+2. Check that all pixel values within a frame are the same. This is to possible eliminate compression variations between pixels. In
 
 12bit:
 
 Same as 16bit but with 4096 frames represented bit shifted 4bits
 
-
-
-
 Results:
 12 Bit :
+1.
+
 Apple Encoder and Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes444HQ 
 --- | --- | --- | --- |--- |--- |---
 Discreet Luminance Values | 876 | 2335 | 3503 | 3503 | 3500 | 3500 
+
+2.
+All pixel values with each frame were equal.
 
 
 16bit :
