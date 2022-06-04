@@ -34,7 +34,7 @@ Results:
 Apple Encoder and Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes444HQ 
 --- | --- | --- | --- |--- |--- |---
-Discreet Luminance Values | 876 | 2335 | 3503 | 3503 | 3500 | 3500 
+Discreet Luminance Values | 876 | 2335 | 3503 | 3503 | 3503 | 3503 
 
 2.
 All pixel values with each frame were equal.
