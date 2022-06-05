@@ -11,6 +11,9 @@ Background:
 10bits can hold 1024 discreet values. 0-1023
 
 ProRes in an intraframed codec meaning compression is not temporal and any compression artafacts will spatially in a frame. To avoid this causing issues the mode of the frame. More on this under testing procdure.
+ProRes Types:
+ ProRes Proxy , Prores LT , ProRes422 , ProRes422HQ , ProRes4444 , ProRes4444XQ 
+
 
 
 To test this I worked in a 16bit RGBA64 space. This was chosen as because I wanted to feed the apple prores encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For simulated 12 and 10 bit I shifted 0-4095 4 bits.
