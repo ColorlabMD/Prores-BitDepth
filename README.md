@@ -23,6 +23,8 @@ FFMPEG was also used, however
 ## Testing procedure:
 
 Platform M1 Apple MacOS 12.2.1 Objective C and C++ Using AVFoundation.
+Images were created as 16bit per component RGBA at a resolution of 720x480
+
 Apple Encoder
 16bit:
 A. Generate 65536 RGBA64 in memory with filled color componenet pixel values of 0-65535 and alpha 65535 where supported.
@@ -58,7 +60,7 @@ ffmpeg -i input.mov -pix_fmt rgb48be output_%05d.tiff
 Apple Encoder and Apple Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes4444XQ 
 --- | --- | --- | --- |--- |--- |---
-16 bit Discreet Luminance Values | 876 | 2336 | 3505 | 3505 | 3505 | 3505 
+16 bit Discreet Luminance Values | 876 | 2337 | 3505 | 3505 | 3505 | 3505 
 12 bit Discreet Luminance Values | 876 | 2336 | 3504 | 3504 | 3504 | 3504 
 10 bit Discreet Luminance Values | 876 | 1024 | 1024 | 1024 | 1024 | 1024 
 
