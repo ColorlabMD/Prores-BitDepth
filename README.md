@@ -15,13 +15,15 @@ ProRes in an intraframed codec meaning compression is not temporal and any compr
 
 To test this I worked in a 16bit RGBA64 space. This was chosen as because I wanted to feed the apple prores encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For simulated 12 and 10 bit I shifted 0-4095 4 bits.
 
+FFMPEG was also used, however 
+
 ## Testing procedure:
 
 Platform M1 Apple MacOS 12.2.1 Objective C and C++ Using AVFoundation.
 Apple Encoder
 16bit:
 A. Generate 65536 RGBA64 in memory with filled color componenet pixel values of 0-65535 and alpha 65535 where supported.
-B. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files.
+B. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files. (Tiff files are used for FFMPEG encoding)
 1. Read back created ProRes movie and count unique luminace values in decoded frames.
 2. Check that all pixel values within a frame are the same. This is to possible eliminate compression variations between pixels. In
 12bit:
@@ -35,8 +37,14 @@ Apple Decoder
 3. For Luminance frames check R=G=B
 4. For R only frames check G=B=0
 
-FFMPEG 5.0.1  libavcodec 59. 18.100
-FFMPEG encoder 
+FFMPEG Encoder
+FFMPEG 5.0.1  libavcodec 59. 18.100 prores_ks
+FFMPEG command for the 16bit/componenet tiff files profiles 0-5:
+ffmpeg -f image2 -framerate 24 -i /input_%05d.tiff -c:v prores_ks -profile (0-5) output.mov
+
+FFMPEG Decoder
+
+ffmpeg -i input.mov -pix_fmt rgb48be output_%05d.tiff
 
 
 
@@ -47,12 +55,16 @@ FFMPEG encoder
 Apple Encoder and Apple Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes4444XQ 
 --- | --- | --- | --- |--- |--- |---
-Discreet Luminance Values | 876 | 2335 | 3503 | 3503 | 3503 | 3503 
+16 bit Discreet Luminance Values | 876 | 2336 | 3505 | 3505 | 3505 | 3505 
+12 bit Discreet Luminance Values | 876 | 2336 | 3504 | 3504 | 3504 | 3504 
+10 bit Discreet Luminance Values | 876 | 1024 | 1024 | 1024 | 1024 | 1024 
 
 FFMPEG prores_ks Encoder and Apple Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes4444XQ 
 --- | --- | --- | --- |--- |--- |---
-Discreet Luminance Values | 876 | 876 | 876 | 876 | 876 | 876 
+16 bit Discreet Luminance Values | 876 | 876 | 876 | 876 | 876 | 876 
+12 bit Discreet Luminance Values | 876 | 876 | 876 | 876 | 876 | 876 
+10 bit Discreet Luminance Values | 876 | 876 | 876 | 876 | 876 | 876 
 
 2.
 All pixel values with each frame were equal.
