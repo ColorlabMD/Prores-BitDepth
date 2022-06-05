@@ -44,8 +44,8 @@ Apple Decoder
 
 FFMPEG Encoder
 FFMPEG 5.0.1  libavcodec 59. 18.100 prores_ks
-FFMPEG command for the 16bit/componenet tiff files profiles 0-5:
-ffmpeg -f image2 -framerate 24 -i /input_%05d.tiff -c:v prores_ks -profile (0-5) output.mov
+
+FFMPEG command for the 16bit/componenet tiff files profiles 0-5:  ffmpeg -f image2 -framerate 24 -i /input_%05d.tiff -c:v prores_ks -profile (0-5) output.mov
 
 FFMPEG Decoder
 
