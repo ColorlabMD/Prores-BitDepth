@@ -13,7 +13,7 @@ ProRes in an intraframed codec meaning compression is not temporal and any comor
 
 To test this I worked in a 16bit RGBA64 space. This was chosen as because I wanted to feed the apple prores encoder every luminance value possible. I am not sure how the apple encoder works with resoect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 'b64a' pixel fornat buffer. For simulated 12 bit I shifted 0-4095 4 bits.
 
-Testing procedure:
+## Testing procedure:
 
 Platform M1 Apple MacOS 12.2.1 Objective c and C++ Using AVFoundation.
 
@@ -27,14 +27,19 @@ B. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff fil
 
 Same as 16bit but with 4096 frames represented bit shifted 4bits
 
-Results:
+## Results:
 12 Bit :
 1.
 
-Apple Encoder and Decoder:
-ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes444HQ 
+Apple Encoder and Apple Decoder:
+ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes4444XQ 
 --- | --- | --- | --- |--- |--- |---
 Discreet Luminance Values | 876 | 2335 | 3503 | 3503 | 3503 | 3503 
+
+FFMPEG prores_ks Encoder and Apple Decoder:
+ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes4444XQ 
+--- | --- | --- | --- |--- |--- |---
+Discreet Luminance Values | 876 | 876 | 876 | 876 | 876 | 876 
 
 2.
 All pixel values with each frame were equal.
