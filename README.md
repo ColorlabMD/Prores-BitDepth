@@ -54,14 +54,12 @@ ffmpeg -i input.mov -pix_fmt rgb48be output_%05d.tiff
 
 
 ## Results:
-12 Bit :
-1.
 
 Apple Encoder and Apple Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes4444XQ 
 --- | --- | --- | --- |--- |--- |---
-16 bit Discreet Luminance Values | 876 | 2337 | 3505 | 3505 | 3505 | 3505 
-12 bit Discreet Luminance Values | 876 | 2336 | 3504 | 3504 | 3504 | 3504 
+16 bit Discreet Luminance Values | 877 | 2337 | 3505 | 3505 | 3505 | 3505 
+12 bit Discreet Luminance Values | 877 | 2336 | 3504 | 3504 | 3504 | 3504 
 10 bit Discreet Luminance Values | 876 | 1024 | 1024 | 1024 | 1024 | 1024 
 
 FFMPEG prores_ks Encoder and Apple Decoder:
@@ -71,15 +69,12 @@ ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | 
 12 bit Discreet Luminance Values | 876 | 876 | 876 | 876 | 876 | 876 
 10 bit Discreet Luminance Values | 876 | 876 | 876 | 876 | 876 | 876 
 
-2.
-All pixel values with each frame were equal.
-
-
-16bit :
-Apple Encoder and Decoder:
-ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes444HQ 
+Apple Encoder and FFMPEG Decoder:
+ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes4444XQ 
 --- | --- | --- | --- |--- |--- |---
-Discreet Luminance Values | 876 | 283 | 290 | 286 | 289 | 3500 
+12 bit Discreet Luminance Values | 876 | 876 | 876 | 876 | 876 | 876 
+10 bit Discreet Luminance Values | 876 | 876 | 876 | 876 | 876 | 876 
+
 
 
 
