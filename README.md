@@ -15,7 +15,7 @@ ProRes in an intraframe codec meaning compression is not temporal and any compre
 ProRes Types:
  ProRes Proxy , Prores LT , ProRes422 , ProRes422HQ , ProRes4444 , ProRes4444XQ 
 
-To test this I worked in a 16bit RGBA64 space. This was chosen as because I wanted to feed the Apple ProRes encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For 12 and 10 bit I shifted 4 and 6bits respectively.
+To test this I worked in a 16bit per component RGBA space. This was chosen as because I wanted to feed the Apple ProRes encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For 12 and 10 bit I shifted 4 and 6bits respectively.
 
 FFmpeg was also used, however the FFmpeg encoder prores_ks only accpets 10 bit pixel buffer format. The decoder offers 12bit output but only for the 444 variants.
 
@@ -39,7 +39,7 @@ Apple Encoder
 A. Generate 65536 RGBA64 in memory with filled color component pixel values of 0-65535 and alpha 65535 where supported.
 B. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files. (Tiff files are used for FFmpeg encoding)
 1. Read back created ProRes movie and count unique luminance values(or red values in red only frames) in decoded frames.
-2. Check that all pixel values within a frame are the same. This is to possible eliminate unique pixel values caused by compression variations between pixels spatially. (After testing, all files were uniform pixel values at all locations in all files generated.)
+2. Check that all pixel values within a frame are the same. This is used to eliminate unique pixel values caused by compression variations between pixels spatially. (After testing, all files were uniform pixel values at all locations in all files generated.)
 12bit:
 Same as 16bit but with 4096 frames represented bit shifted 4 bits
 10bit:
@@ -60,7 +60,7 @@ FFmpeg Decoder
 
 ffmpeg -i input.mov -pix_fmt rgb48be output_%05d.tiff or for quick check ffmpeg -i input.mov -f framemd5.md5 and check for duplicates.
 
-
+In case the encoder had a special case for the entire frame being a single value, I also created files with the top half of the screen having the test values and the bottom half having randomly generated noise. This did not have any effect on the results. These files are avaible upon request but can not be zipped to fit under the github max file size limit.
 
 ## Results:
 
