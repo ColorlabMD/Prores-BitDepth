@@ -11,7 +11,7 @@ What is the maximum bitdepth a prores file can be? The Apple documentation is va
 
 10bits can hold 1024 discreet values. 0-1023
 
-ProRes in an intraframe codec meaning compression is not temporal and any compression artifacts will spatially in a frame. To avoid this causing issues the mode of the frame. More on this under testing procedure.
+ProRes in an intraframe codec meaning compression is not temporal and any compression artifacts will spatially in a frame.
 ProRes Types:
  ProRes Proxy , Prores LT , ProRes422 , ProRes422HQ , ProRes4444 , ProRes4444XQ 
 
