@@ -22,7 +22,7 @@ FFmpeg was also used, however the FFmpeg encoder prores_ks only accpets 10 bit p
 
 ## Files:
 All the tested ProRes outputs are provided as are the Tiff files for 12 bit and 10bit. If anyone would like receive the 16bit tiff sequence feel free to ask. 
-The program to test for the values created from the encoded sequence is provided as a commandline tool movdepthcheck.
+The mac os program to test for the values created from the encoded sequence is provided as a commandline tool movdepthcheck.
 
 Usage: movdepthcheck input.mov
 
