@@ -19,6 +19,14 @@ To test this I worked in a 16bit RGBA64 space. This was chosen as because I want
 
 FFmpeg was also used, however the FFmpeg encoder prores_ks only accpets 10 bit pixel buffer format. The decoder offers 12bit output but only for the 444 variants.
 
+
+## Files:
+All the tested ProRes outputs are provided as are the Tiff files for 12 bit and 10bit. If anyone would like to 16bit tiff sequence feel free to ask. 
+The program to test for the values created from the encoded sequence is provided as a commandline tool movdepthcheck.
+Usage: movdepthcheck input.mov
+arguments: -h only checks the top half of the image. (height/2)
+
+
 ## Testing procedure:
 
 Platform: M1 Apple MacOS 12.2.1 Objective C and C++ Using AVFoundation.
