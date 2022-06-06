@@ -49,7 +49,7 @@ FFmpeg command for the 16bit/component tiff files profiles 0-5:  FFmpeg -f image
 
 FFmpeg Decoder
 
-FFmpeg -i input.mov -pix_fmt rgb48be output_%05d.tiff
+FFmpeg -i input.mov -pix_fmt rgb48be output_%05d.tiff or for quick check ffmpeg -i input.mov -f framemd5.md5 and check for duplicates.
 
 
 
