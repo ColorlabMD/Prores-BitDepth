@@ -1,6 +1,7 @@
 # Prores-BitDepth
 
-What is the maximum bitdepth a prores file can be. The Apple documentation is vague on the exact details for each codec and refers to "up to 12 bits" with certain Prores types or supports a certain workflow. https://support.apple.com/en-us/HT202410
+What is the maximum bitdepth a prores file can be. The Apple documentation is vague on the exact details for each codec and refers to "up to 12 bits" with certain Prores types or supports a certain workflow. https://support.apple.com/en-us/HT202410 
+
 
 ## Background:
 
@@ -81,7 +82,7 @@ ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | 
 
 ## Conclusions:
 
-1. ProRes is truly "up to 12bit" in all formats except proxy. 
+1. ProRes is truly "up to 12bit" in all formats except proxy. "up to 12 bits" meaning more than 11bits(2048) and less than 4096. 
 2. ProRes decoding requires 12bits to store all possible output values except in proxy.
 3. All formats, except proxy, can produce 1024 discreet output values from 1024 input values.(Full 10bit)
 4. Color bitdepth is lower than luminance even though the name of the codec ProRes444 "4:4:4 meaning commonly means sample ratios between compenents" would seem to advertise otherwise.
