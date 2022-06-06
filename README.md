@@ -11,17 +11,17 @@ What is the maximum bitdepth a prores file can be? The Apple documentation is va
 
 10bits can hold 1024 discreet values. 0-1023
 
-ProRes in an intraframe codec meaning compression is not temporal and any compression artifacts will spatially in a frame.
+ProRes is an intraframe codec meaning compression is not temporal and any compression artifacts will spatially in a frame.
 ProRes Types:
  ProRes Proxy , Prores LT , ProRes422 , ProRes422HQ , ProRes4444 , ProRes4444XQ 
 
-To test this I worked in a 16bit per component RGBA space. This was chosen as because I wanted to feed the Apple ProRes encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For 12 and 10 bit I shifted 4 and 6bits respectively.
+To test this the graphics used a 16bit per component RGBA space. This was chosen to feed the Apple ProRes encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For 12 and 10 bit I shifted 4 and 6bits respectively.
 
 FFmpeg was also used, however the FFmpeg encoder prores_ks only accpets 10 bit pixel buffer format. The decoder offers 12bit output but only for the 444 variants.
 
 
 ## Files:
-All the tested ProRes outputs are provided as are the Tiff files for 12 bit and 10bit. If anyone would like to 16bit tiff sequence feel free to ask. 
+All the tested ProRes outputs are provided as are the Tiff files for 12 bit and 10bit. If anyone would like receive the 16bit tiff sequence feel free to ask. 
 The program to test for the values created from the encoded sequence is provided as a commandline tool movdepthcheck.
 
 Usage: movdepthcheck input.mov
