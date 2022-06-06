@@ -71,7 +71,7 @@ ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | 
 12 bit Discreet Luminance Values | 877 | 877 | 877 | 877 | 877 | 877 
 10 bit Discreet Luminance Values | 877 | 877 | 877 | 877 | 877 | 877 
 12 bit Discreet Red Only Values | 685 | 685 | 685 | 685 | 685 | 685 
-10 bit Discreet Red Only Values | 594 | 993 | 1024 | 1024 | 1024 | 1024 
+10 bit Discreet Red Only Values | 589 | 589 | 589 | 589 | 589 | 589 
 
 Apple Encoder and FFMPEG Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes4444XQ 
