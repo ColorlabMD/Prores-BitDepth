@@ -92,7 +92,7 @@ ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | 
 
 ## Conclusions:
 
-1. ProRes is truly "up to 12bit" in all formats except ProRes proxy. "up to 12 bits" meaning more than 11bits(2048) and less than 4096. 
+1. ProRes is truly "up to 12-bit" in all formats except ProRes proxy. "up to 12 bits" meaning more than 11bits(2048) and less than 4096. 
 2. ProRes decoding requires 12bits to store all possible output values except in ProRes proxy.
 3. All formats, except ProRes proxy, can produce 1024 discreet output values from 1024 input values.(Full 10bit)
 4. Color bitdepth is lower than luminance even though the name of the codec ProRes444. "4:4:4" commonly means sample ratios between components but it would seem this is not the case with ProRes.
