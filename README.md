@@ -19,7 +19,7 @@ ProRes Types:
 
 To test this the graphics used a 16bit per component RGBA space. This was chosen to feed the Apple ProRes encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For 12 and 10 bit I shifted 4 and 6bits respectively.
 
-FFmpeg was also used, however the FFmpeg encoder prores_ks only accpets 10 bit pixel buffer format. The decoder offers 12bit output but only for the 444 variants.
+FFmpeg was also used, however the FFmpeg encoder prores_ks only accepts 10 bit pixel buffer format. The decoder offers 12bit output but only for the 4444 variants.
 
 
 ## Files:
