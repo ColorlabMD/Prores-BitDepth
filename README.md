@@ -36,6 +36,7 @@ arguments: -h only checks the top half of the image. (height/2)
 Platform: M1 Apple MacOS 12.2.1 Objective C and C++ Using AVFoundation.
 Images were created as 16bit per component RGBA at a resolution of 720x480
 
+The file frame number is equal to the pixel value. For 12 and 10 bit it is the frame number << 4 (multiplied by 16) or <<6 (multiplied by 64)
 Apple Encoder
 16bit:
 A. Generate 65536 RGBA64 in memory with filled color component pixel values of 0-65535 and alpha 65535 where supported.
@@ -48,7 +49,7 @@ Same as 16bit but with 4096 frames represented bit shifted 4 bits
 Same as 16bit but with 1024 frames represented bit shifted 6 bits
 
 Apple Decoder
-1. Read frames to 16bit per component buffer via ...
+1. Read frames to 16bit per component buffer via AVAssetReader.
 2. Check all values in frame are equal
 3. For Luminance frames check R=G=B
 4. For R only color frames check G=B=0 (It does not in any of the formats.  However G,B do not change with out R. R is always ascending while G,B fluctuate between ascending and descending at a small amount in 1 or 2 of the LSBs)
