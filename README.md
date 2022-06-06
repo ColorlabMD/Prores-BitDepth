@@ -36,7 +36,7 @@ arguments: -h only checks the top half of the image. (height/2)
 Platform: M1 Apple MacOS 12.2.1 Objective C and C++ Using AVFoundation.
 Images were created as 16bit per component RGBA at a resolution of 720x480
 
-The file frame number is equal to the pixel value. For 12 and 10 bit it is the frame number << 4 (multiplied by 16) or <<6 (multiplied by 64)
+The file frame number is equal to the input pixel value. For 12 and 10 bit it is the frame number << 4 (multiplied by 16) or <<6 (multiplied by 64)
 
 
 Apple Encoder
