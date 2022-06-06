@@ -14,11 +14,9 @@ ProRes in an intraframe codec meaning compression is not temporal and any compre
 ProRes Types:
  ProRes Proxy , Prores LT , ProRes422 , ProRes422HQ , ProRes4444 , ProRes4444XQ 
 
-
-
 To test this I worked in a 16bit RGBA64 space. This was chosen as because I wanted to feed the apple ProRes encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For simulated 12 and 10 bit I shifted 4 and 6bits respectively.
 
-FFmpeg was also used, however the FFmpeg encoder prores_ks only accpets 10 bit pixel buffer format.
+FFmpeg was also used, however the FFmpeg encoder prores_ks only accpets 10 bit pixel buffer format. The decoder offers 12bit output but only for the 444 variants.
 
 ## Testing procedure:
 
@@ -30,7 +28,7 @@ Apple Encoder
 A. Generate 65536 RGBA64 in memory with filled color component pixel values of 0-65535 and alpha 65535 where supported.
 B. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files. (Tiff files are used for FFmpeg encoding)
 1. Read back created ProRes movie and count unique luminance values(or red values in red only frames) in decoded frames.
-2. Check that all pixel values within a frame are the same. This is to possible eliminate compression variations between pixels.
+2. Check that all pixel values within a frame are the same. This is to possible eliminate unique pixel values caused by compression variations between pixels spatially. (After testing, all files were uniform pixel values at all locations in all files generated.)
 12bit:
 Same as 16bit but with 4096 frames represented bit shifted 4 bits
 10bit:
@@ -81,6 +79,13 @@ ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | 
 12 bit Discreet Red Only Values | 809 | 808 | 808 | 808 | 2635 | 2635 
 10 bit Discreet Red Only Values | 656 | 656 | 660 | 660 | 1024 | 1024 
 
+## Conclusions:
+
+1. ProRes is truly "up to 12bit" in all formats except proxy. 
+2. ProRes decoding requires 12bits to store all possible output values except in proxy.
+3. All formats, except proxy, can produce 1024 discreet output values from 1024 input values.(Full 10bit)
+4. Color bitdepth is lower than luminance even though the name of the codec ProRes444 "4:4:4 meaning commonly means sample ratios between compenents" would seem to advertise otherwise.
+5. The FFmpeg prores_ks encoder is not recommended for encoding and the decoder should only be used for 444 Proes types.
 
 
 
