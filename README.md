@@ -10,15 +10,15 @@ Background:
 
 10bits can hold 1024 discreet values. 0-1023
 
-ProRes in an intraframed codec meaning compression is not temporal and any compression artafacts will spatially in a frame. To avoid this causing issues the mode of the frame. More on this under testing procdure.
+ProRes in an intraframe codec meaning compression is not temporal and any compression artifacts will spatially in a frame. To avoid this causing issues the mode of the frame. More on this under testing procedure.
 ProRes Types:
  ProRes Proxy , Prores LT , ProRes422 , ProRes422HQ , ProRes4444 , ProRes4444XQ 
 
 
 
-To test this I worked in a 16bit RGBA64 space. This was chosen as because I wanted to feed the apple prores encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For simulated 12 and 10 bit I shifted 4 and 6bits respectivly.
+To test this I worked in a 16bit RGBA64 space. This was chosen as because I wanted to feed the apple ProRes encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For simulated 12 and 10 bit I shifted 4 and 6bits respectively.
 
-FFMPEG was also used, however the ffmpeg encoder prores_ks only accpets 10 bit pixel buffer format.
+FFmpeg was also used, however the FFmpeg encoder prores_ks only accpets 10 bit pixel buffer format.
 
 ## Testing procedure:
 
@@ -27,9 +27,9 @@ Images were created as 16bit per component RGBA at a resolution of 720x480
 
 Apple Encoder
 16bit:
-A. Generate 65536 RGBA64 in memory with filled color componenet pixel values of 0-65535 and alpha 65535 where supported.
-B. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files. (Tiff files are used for FFMPEG encoding)
-1. Read back created ProRes movie and count unique luminace values(or red values in red only frames) in decoded frames.
+A. Generate 65536 RGBA64 in memory with filled color component pixel values of 0-65535 and alpha 65535 where supported.
+B. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files. (Tiff files are used for FFmpeg encoding)
+1. Read back created ProRes movie and count unique luminance values(or red values in red only frames) in decoded frames.
 2. Check that all pixel values within a frame are the same. This is to possible eliminate compression variations between pixels.
 12bit:
 Same as 16bit but with 4096 frames represented bit shifted 4 bits
@@ -37,19 +37,19 @@ Same as 16bit but with 4096 frames represented bit shifted 4 bits
 Same as 16bit but with 1024 frames represented bit shifted 6 bits
 
 Apple Decoder
-1. Read frames to 16bit per compenent buffer via ...
+1. Read frames to 16bit per component buffer via ...
 2. Check all values in frame are equal
 3. For Luminance frames check R=G=B
-4. For R only color frames check G=B=0 (It does not in any of the formats.  However G,B do not change with out R. R is always ascending while G,B flucuate between ascending and descending at a small amount in 1 or 2 of the LSBs)
+4. For R only color frames check G=B=0 (It does not in any of the formats.  However G,B do not change with out R. R is always ascending while G,B fluctuate between ascending and descending at a small amount in 1 or 2 of the LSBs)
 
-FFMPEG Encoder
+FFmpeg Encoder
 
-FFMPEG 5.0.1  libavcodec 59. 18.100 prores_ks
-FFMPEG command for the 16bit/componenet tiff files profiles 0-5:  ffmpeg -f image2 -framerate 24 -i /input_%05d.tiff -c:v prores_ks -profile (0-5) output.mov
+FFmpeg 5.0.1  libavcodec 59. 18.100 prores_ks
+FFmpeg command for the 16bit/component tiff files profiles 0-5:  FFmpeg -f image2 -framerate 24 -i /input_%05d.tiff -c:v prores_ks -profile (0-5) output.mov
 
-FFMPEG Decoder
+FFmpeg Decoder
 
-ffmpeg -i input.mov -pix_fmt rgb48be output_%05d.tiff
+FFmpeg -i input.mov -pix_fmt rgb48be output_%05d.tiff
 
 
 
@@ -65,7 +65,7 @@ ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | 
 12 bit Discreet Red Only Values | 682 | 1689 | 2381 | 2381 | 2385 | 2385 
 10 bit Discreet Red Only Values | 594 | 993 | 1024 | 1024 | 1024 | 1024 
 
-FFMPEG prores_ks Encoder and Apple Decoder:
+FFmpeg prores_ks Encoder and Apple Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes4444XQ 
 --- | --- | --- | --- |--- |--- |---
 12 bit Discreet Luminance Values | 877 | 877 | 877 | 877 | 877 | 877 
@@ -73,7 +73,7 @@ ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | 
 12 bit Discreet Red Only Values | 685 | 685 | 685 | 685 | 685 | 685 
 10 bit Discreet Red Only Values | 589 | 589 | 589 | 589 | 589 | 589 
 
-Apple Encoder and FFMPEG Decoder:
+Apple Encoder and FFmpeg Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes4444XQ 
 --- | --- | --- | --- |--- |--- |---
 12 bit Discreet Luminance Values | 877 | 877 | 877 | 877 | 3504 | 3504 
