@@ -61,7 +61,7 @@ ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | 
 16 bit Discreet Luminance Values | 877 | 2337 | 3505 | 3505 | 3505 | 3505 
 12 bit Discreet Luminance Values | 877 | 2336 | 3504 | 3504 | 3504 | 3504 
 10 bit Discreet Luminance Values | 876 | 1024 | 1024 | 1024 | 1024 | 1024 
-16 bit Discreet Red Values | 877 | 2337 | 3505 | 3505 | 3505 | 3505 
+16 bit Discreet Red Values | 708 | 1880 | 2806 | 2806 | 2814 | 2814 
 12 bit Discreet Red Values | 877 | 2337 | 3505 | 3505 | 3505 | 3505 
 10 bit Discreet Red Values | 877 | 2337 | 3505 | 3505 | 3505 | 3505 
 
