@@ -96,7 +96,7 @@ ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | 
 2. ProRes decoding requires 12bits to store all possible output values except in proxy.
 3. All formats, except proxy, can produce 1024 discreet output values from 1024 input values.(Full 10bit)
 4. Color bitdepth is lower than luminance even though the name of the codec ProRes444. "4:4:4" commonly means sample ratios between components but it would seem this is not the case with ProRes.
-5. The FFmpeg prores_ks encoder is not recommended for encoding and the decoder should only be used for 444 Proes types.
+5. Apple encoder and decoder are far more preferable to use than the FFmpeg prores_ks encoder and decoder.(except decoding 444 files where Apple and FFmpeg are very comprable) 
 
 
 
