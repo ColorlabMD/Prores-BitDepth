@@ -1,6 +1,6 @@
 # Prores-BitDepth
 
-What is the maximum bitdepth a prores file can be? The Apple documentation is vague on the exact details for each codec and refers to "up to 12 bits" with certain Prores types or supports a certain workflow. https://support.apple.com/en-us/HT202410 Apple Quicktime Player info screen indicates "up to 12bit" on all variants. ![alt text](https://github.com/ColorlabMD/Prores-BitDepth/blob/main/qtplayerinfo.png)
+What is the maximum bitdepth a prores file can be? The Apple documentation is vague on the exact details for each codec and refers to "up to 12-bit" with certain Prores types or supports a certain workflow. https://support.apple.com/en-us/HT202410 Apple Quicktime Player info screen indicates "up to 12-bit" on all variants. ![alt text](https://github.com/ColorlabMD/Prores-BitDepth/blob/main/qtplayerinfo.png)
 
 
 ## Background:
