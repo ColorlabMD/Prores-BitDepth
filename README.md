@@ -30,7 +30,7 @@ Apple Encoder
 A. Generate 65536 RGBA64 in memory with filled color componenet pixel values of 0-65535 and alpha 65535 where supported.
 B. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files. (Tiff files are used for FFMPEG encoding)
 1. Read back created ProRes movie and count unique luminace values in decoded frames.
-2. Check that all pixel values within a frame are the same. This is to possible eliminate compression variations between pixels. In
+2. Check that all pixel values within a frame are the same. This is to possible eliminate compression variations between pixels.
 12bit:
 Same as 16bit but with 4096 frames represented bit shifted 4 bits
 10bit:
@@ -40,7 +40,7 @@ Apple Decoder
 1. Read frames to 16bit per compenent buffer via ...
 2. Check all values in frame are equal
 3. For Luminance frames check R=G=B
-4. For R only frames check G=B=0
+4. For R only color frames check G=B=0 (It does not in any of the formats)
 
 FFMPEG Encoder
 FFMPEG 5.0.1  libavcodec 59. 18.100 prores_ks
@@ -62,8 +62,8 @@ ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | 
 12 bit Discreet Luminance Values | 877 | 2336 | 3504 | 3504 | 3504 | 3504 
 10 bit Discreet Luminance Values | 876 | 1024 | 1024 | 1024 | 1024 | 1024 
 16 bit Discreet Red Values | 708 | 1880 | 2806 | 2806 | 2814 | 2814 
-12 bit Discreet Red Values | 877 | 2337 | 3505 | 3505 | 3505 | 3505 
-10 bit Discreet Red Values | 877 | 2337 | 3505 | 3505 | 3505 | 3505 
+12 bit Discreet Red Values | 682 | 1689 | 2381 | 2381 | 2385 | 2385 
+10 bit Discreet Red Values | 594 | 993 | 1024 | 1024 | 1024 | 1024 
 
 FFMPEG prores_ks Encoder and Apple Decoder:
 ProRes type | ProRes Proxy | Prores LT | ProRes422 | ProRes422HQ | ProRes4444 | ProRes4444XQ 
