@@ -2,7 +2,7 @@
 
 What is the maximum bitdepth a prores file can be. The Apple documentation is vague on the exact details for each codec and refers to "up to 12 bits" with certain Prores types or supports a certain workflow. https://support.apple.com/en-us/HT202410
 
-Background:
+##Background:
 
 16bits can hold 65536 discreet values. 0-65535
 
@@ -22,7 +22,7 @@ FFmpeg was also used, however the FFmpeg encoder prores_ks only accpets 10 bit p
 
 ## Testing procedure:
 
-Platform M1 Apple MacOS 12.2.1 Objective C and C++ Using AVFoundation.
+Platform: M1 Apple MacOS 12.2.1 Objective C and C++ Using AVFoundation.
 Images were created as 16bit per component RGBA at a resolution of 720x480
 
 Apple Encoder
