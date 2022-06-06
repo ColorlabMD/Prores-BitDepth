@@ -15,7 +15,7 @@ ProRes in an intraframe codec meaning compression is not temporal and any compre
 ProRes Types:
  ProRes Proxy , Prores LT , ProRes422 , ProRes422HQ , ProRes4444 , ProRes4444XQ 
 
-To test this I worked in a 16bit RGBA64 space. This was chosen as because I wanted to feed the apple ProRes encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For simulated 12 and 10 bit I shifted 4 and 6bits respectively.
+To test this I worked in a 16bit RGBA64 space. This was chosen as because I wanted to feed the Apple ProRes encoder every luminance value possible. I am not sure how the apple encoder works with respect to its "native" input pixel format. I used an AVAssetWriter with a AVAssetWriterInputPixelBufferAdaptor and 64bit RGBA pixel format buffer. For 12 and 10 bit I shifted 4 and 6bits respectively.
 
 FFmpeg was also used, however the FFmpeg encoder prores_ks only accpets 10 bit pixel buffer format. The decoder offers 12bit output but only for the 444 variants.
 
@@ -54,11 +54,11 @@ Apple Decoder
 FFmpeg Encoder
 
 FFmpeg 5.0.1  libavcodec 59. 18.100 prores_ks
-FFmpeg command for the 16bit/component tiff files profiles 0-5:  FFmpeg -f image2 -framerate 24 -i /input_%05d.tiff -c:v prores_ks -profile (0-5) output.mov
+FFmpeg command for the 16bit/component tiff files profiles 0-5:  ffmpeg -f image2 -framerate 24 -i /input_%05d.tiff -c:v prores_ks -profile (0-5) output.mov
 
 FFmpeg Decoder
 
-FFmpeg -i input.mov -pix_fmt rgb48be output_%05d.tiff or for quick check ffmpeg -i input.mov -f framemd5.md5 and check for duplicates.
+ffmpeg -i input.mov -pix_fmt rgb48be output_%05d.tiff or for quick check ffmpeg -i input.mov -f framemd5.md5 and check for duplicates.
 
 
 
