@@ -40,7 +40,7 @@ Apple Decoder
 1. Read frames to 16bit per compenent buffer via ...
 2. Check all values in frame are equal
 3. For Luminance frames check R=G=B
-4. For R only color frames check G=B=0 (It does not in any of the formats)
+4. For R only color frames check G=B=0 (It does not in any of the formats.  However G,B do not chnage with out R. R is always ascending while G,B flucuate between ascending and descending at a small amount in 1 or 2 of the LSBs)
 
 FFMPEG Encoder
 FFMPEG 5.0.1  libavcodec 59. 18.100 prores_ks
