@@ -36,30 +36,33 @@ arguments: -h only checks the top half of the image. (height/2)
 Platform: M1 Apple MacOS 12.2.1 Objective C and C++ Using AVFoundation.
 Images were created as 16bit per component RGBA at a resolution of 720x480
 
-The file frame number is equal to the input pixel value. For 12 and 10 bit it is the frame number << 4 (multiplied by 16) or <<6 (multiplied by 64)
+Writing:
 
+The file frame number is equal to the input pixel value. For 12 and 10 bit it is the frame number << 4 (multiplied by 16) or <<6 (multiplied by 64)
 
 Apple Encoder
 16bit:
-A. Generate 65536 RGBA64 frames in memory with filled color component pixel values of 0-65535 and alpha 65535 where supported.
-B. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files. (Tiff files are used for FFmpeg encoding)
-1. Read back created ProRes movie and count unique luminance values(or red values in red only frames) in decoded frames.
-2. Check that all pixel values within a frame are the same. This is used to eliminate unique pixel values caused by compression variations between pixels spatially. (After testing, all files were uniform pixel values at all locations in all files generated.)
+1. Generate 65536 RGBA64 frames in memory with filled color component pixel values of 0-65535 and alpha 65535 where supported. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files. (Tiff files are used for FFmpeg encoding)
 12bit:
 Same as 16bit but with 4096 frames represented bit shifted 4 bits
 10bit:
 Same as 16bit but with 1024 frames represented bit shifted 6 bits
+
+FFmpeg Encoder
+
+FFmpeg 5.0.1  libavcodec 59. 18.100 prores_ks
+FFmpeg command for the 16bit/component tiff files profiles 0-5:  ffmpeg -f image2 -framerate 24 -i /input_%05d.tiff -c:v prores_ks -profile (0-5) output.mov
+
+Reading:
+
+1. Read back created ProRes movie and count unique luminance values(or red values in red only frames) in decoded frames.
+2. Check that all pixel values within a frame are the same. This is used to eliminate unique pixel values caused by compression variations between pixels spatially. (After testing, all files were uniform pixel values at all locations in all files generated.)
 
 Apple Decoder
 1. Read frames to 16bit per component buffer via AVAssetReader.
 2. Check all values in frame are equal
 3. For Luminance frames check R=G=B
 4. For R only color frames check G=B=0 (It does not in any of the formats.  However G,B do not change with out R. R is always ascending while G,B fluctuate between ascending and descending at a small amount in 1 or 2 of the LSBs)
-
-FFmpeg Encoder
-
-FFmpeg 5.0.1  libavcodec 59. 18.100 prores_ks
-FFmpeg command for the 16bit/component tiff files profiles 0-5:  ffmpeg -f image2 -framerate 24 -i /input_%05d.tiff -c:v prores_ks -profile (0-5) output.mov
 
 FFmpeg Decoder
 
