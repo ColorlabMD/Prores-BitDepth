@@ -41,7 +41,7 @@ The file frame number is equal to the input pixel value. For 12 and 10 bit it is
 
 Apple Encoder
 16bit:
-A. Generate 65536 RGBA64 in memory with filled color component pixel values of 0-65535 and alpha 65535 where supported.
+A. Generate 65536 RGBA64 frames in memory with filled color component pixel values of 0-65535 and alpha 65535 where supported.
 B. Write the resulting frames in memory to Apple ProRes Types and 16bit Tiff files. (Tiff files are used for FFmpeg encoding)
 1. Read back created ProRes movie and count unique luminance values(or red values in red only frames) in decoded frames.
 2. Check that all pixel values within a frame are the same. This is used to eliminate unique pixel values caused by compression variations between pixels spatially. (After testing, all files were uniform pixel values at all locations in all files generated.)
